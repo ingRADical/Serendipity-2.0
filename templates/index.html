@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Serendipity</title>
+    <style>
+
+/* CSS for only this section of code */
+        body {
+            margin: 0;
+            font-family: Georgia, sans-serif;
+            overflow: auto; 
+        }
+
+        /* Image size is exclusive to this page */
+        img { 
+            width: 1440px;
+            margin-top: 15px; 
+            margin-left: -20px
+        }
+
+        main {
+            min-height: 200vh; 
+            padding: 20px; 
+            position: relative; 
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="background" id="background">
+        <!-- Header is sectioned from the background with the index, menu, order url -->
+        <header>
+            <h1>Serendipity</h1>
+            <nav>
+                <a href="{{ url_for('index') }}">Home</a>
+                <a href="{{ url_for('menu') }}">Menu</a>
+                <a href="{{ url_for('order') }}">Order</a>
+            </nav>
+        </header>
+
+     <main>
+
+        <img src="static/images/website.jpg">
+        <img src="static/images/website1.jpg">
+        <div style="height: 150px;">
+            <h3>See Menu for More Details</h3>
+        </div>
+     </main>
+
+    </div>  
+
+    <!-- Code for the fade in of the store name -->
+    <div class="fade-in-word" id="fadeInWord">Serendipity</div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const word = document.getElementById('fadeInWord');
+            const background = document.getElementById('background');
+
+            setTimeout(() => {
+                background.classList.add('blurred'); 
+                /* How much time it has to fully fade in */
+                word.classList.add('fade-in'); 
+            }, 500); 
+
+            setTimeout(() => {
+                word.classList.remove('fade-in'); 
+                word.classList.add('fade-out');
+                /* The background is blurred as the word fades in */
+                background.classList.remove('blurred'); 
+            }, 2000); 
+
+            setTimeout(() => {
+                /* How much time it has to fully fade out (millisecond) */
+                word.style.display = 'none'; 
+            }, 4000); 
+        });
+    </script>
+</body>
+</html>

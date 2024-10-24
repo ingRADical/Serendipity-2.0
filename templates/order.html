@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serendipity - Order</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+    <script>
+        function toggleOptions(category) {
+            const optionsDiv = document.getElementById(category);
+            if (optionsDiv) {
+                optionsDiv.style.display = optionsDiv.style.display === "block" ? "none" : "block";
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Place Your Order</h1>
+        <nav>
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('menu') }}">Menu</a>
+            <a href="{{ url_for('order') }}">Order</a>
+        </nav>
+    </header>
+
+<!--In this section of the code I am calling for items from the database from drink names, toppings, quanitity, prices -->
+    <main>
+        <h2>Select Your Drink Category</h2>
+        <div>
+            <!--This creates the drop box-->
+            <div class="category-button" onclick="toggleOptions('milk_tea_options')">Milk Tea</div>
+            <div class="category-options" id="milk_tea_options">
+                <form method="POST" action="{{ url_for('order') }}">
+                    <label for="milk_tea">Select Milk Tea Orders:</label>
+                    <select name="drink_id" id="milk_tea" required>
+                        {% for milk in milk_teas %}
+                            <option value="{{ milk.id }}">{{ milk.milk_tea }} ({{(milk.temperature)}})</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+    
+                    <label for="size">Select Size:</label>
+                    <select name="size_type" required>
+                        {% for size in sizes %}
+                            <option value="{{ size.id }}">{{ size.size }} (${{ size.price }} NZD)</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+    
+                    <label for="topping">Select Topping:</label>
+                    <select name="topping_id">
+                        {% for topping in toppings %}
+                            <option value="{{ topping.id }}">{{ topping.toppings }}</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+    
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" name="quantity" value="1" min="1" required>
+                    <br>
+    
+                    <input type="submit" value="Order">
+                </form>
+            </div>
+
+            <div class="category-button" onclick="toggleOptions('brewed_tea_options')">Brewed Tea</div>
+            <div class="category-options" id="brewed_tea_options">
+                <form method="POST" action="{{ url_for('order') }}">
+                    <label for="brewed_tea">Select Brewed Tea Orders:</label>
+                    <select name="drink_id" id="brewed_tea" required>
+                        {% for tea in brewed_teas %}
+                            <option value="{{ tea.id }}">{{tea.brewed_tea}} ({{(tea.temperature)}})</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+
+                    <label for="size">Select Size:</label>
+                    <select name="size_type" required>
+                        {% for size in sizes %}
+                            <option value="{{ size.id }}">{{ size.size }} (${{ size.price }} NZD)</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+    
+                    <label for="topping">Select Topping:</label>
+                    <select name="topping_id">
+                        {% for topping in toppings %}
+                            <option value="{{ topping.id }}">{{ topping.toppings }}</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+                    <br>
+    
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" name="quantity" value="1" min="1" required>
+                    <br>
+    
+                    <input type="submit" value="Order">
+                </form>
+            </div>
+
+            <div class="category-button" onclick="toggleOptions('smoothie_options')">Smoothies</div>
+            <div class="category-options" id="smoothie_options">
+                <form method="POST" action="{{ url_for('order') }}">
+                    <label for="smoothie">Select Smoothie Orders:</label>
+                    <select name="drink_id" id="smoothie" required>
+                        {% for smooth in smoothies %}
+                            <option value="{{ smooth.id }}">{{ smooth.smoothie }}</option>
+                        {% endfor %}
+                    </select>
+
+                    <br>
+
+                    <label for="size">Select Size:</label>
+                    <select name="size_type" required>
+                        {% for size in sizes %}
+                            <option value="{{ size.id }}">{{ size.size }} (${{ size.price }} NZD)</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+    
+                    <label for="topping">Select Topping:</label>
+                    <select name="topping_id">
+                        {% for topping in toppings %}
+                            <option value="{{ topping.id }}">{{ topping.toppings }}</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+    
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" name="quantity" value="1" min="1" required>
+                    <br>
+    
+                    <!--By ordering, it is recorded into the database-->
+                    <input type="submit" value="Order">
+                </form>
+            </div>
+        </div>
+
+
+    </main>
+    

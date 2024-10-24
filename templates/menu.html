@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serendipity - Our Menu</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+    <style>
+        body {
+                 margin: 0;
+                 font-family: Georgia, 'Times New Roman', Times, serif;
+                 background-color: #f0f0f0; 
+             }
+     
+             main {
+                 align-items: center; 
+                 padding: 20px;
+    
+             }
+     
+             img {
+                 width: 250px;
+                 height: 250px;
+                 overflow: hidden;
+                 margin: 2px;
+                 border-radius: 10px; 
+                 box-shadow: 0 2px 5px rgba(115, 102, 39, 0.201);
+
+             }
+         </style>
+</head>
+<body>
+    <header>
+        <h1>Menu</h1>
+        <nav>
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('menu') }}">Menu</a>
+            <a href="{{ url_for('order') }}">Order</a>
+        </nav>
+    </header>
+
+    <!-- Following each drink catergory is follows the same format of calling from the database that tells this html what image is asigned to what drink -->
+    <main>
+        <div class="drink-category">
+            <h2>Milk Tea</h2>
+            <div class="drink-items">
+                {% for item in milk_tea %}
+                <div class="drink-item">
+                    <img src="{{ item['image_path'] }}" alt="{{ item['milk_tea'] }}">
+                    <!-- For every item it is calling for the name in the database  -->
+                    <div class="drink-name">{{ item['milk_tea']}}</div>
+                    <!-- Below the drink name the temperature -->
+                    <div class="temperature">{{ item['temperature']}}</div>
+                </div>
+                {% endfor %}
+            </div>
+            </div>
+        </div>
+
+        <div class="drink-category">
+            <h2>Smoothies</h2>
+            <div class="drink-items">
+                {% for item in smoothies %}
+                <div class="drink-item">
+                    <img src="{{ item['image_path'] }}" alt="{{ item['smoothie'] }}">
+                    <div class="drink-name">{{ item['smoothie'] }}</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="drink-category">
+            <h2>Brewed Tea</h2>
+            <div class="drink-items">
+                {% for item in brewed_tea %}
+                <div class="drink-item">
+                    <img src="{{ item['image_path'] }}" alt="{{ item['brewed_tea'] }}">
+                    <div class="drink-name">{{ item['brewed_tea']}}</div>
+                    <div class="temperature">{{ item['temperature']}}</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="drink-category">
+            <h2>Toppings</h2>
+            <div class="drink-items">
+                {% for item in toppings %}
+                <div class="drink-item">
+                    <img src="{{ item['image_path'] }}" alt="{{ item['toppings'] }}">
+                    <div class="drink-name">{{ item['toppings'] }}</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="drink-category">
+            <h2>Desserts</h2>
+            <div class="drink-items">
+                {% for item in desserts %}
+                <div class="drink-item">
+                    <img src="{{ item['image_path'] }}" alt="{{ item['desserts'] }}">
+                    <div class="drink-name">{{ item['desserts'] }}</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <h3>Order Desserts in Store</h3>
+    </main>
+
+</body>
+</html>

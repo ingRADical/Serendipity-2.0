@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>ʕ•́ᴥ•̀ʔっ</h1>
+    </header>
+
+    <!--Recites the order to the customer on a new page-->
+    <main>
+        <h2>Your Order was Successful!</h2>
+        <p>Drink: {{ order['drink_name'] }}</p>
+        <p>Topping: {{ order['topping_name'] }}</p>
+        <p>Size: {{ order['size_name'] }}</p>
+        <p>Quantity: {{ order['quantity'] }}</p>
+        <p>Total Price: ${{ order['total_price'] }} NZD</p>
+       
+        <!--Option to go back to the homepage and order more-->
+        <nav>
+         <a href="{{ url_for('index') }}">Return to Home</a>
+        </nav>
+    </main>
+</body>
+</html>

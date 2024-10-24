@@ -1,0 +1,138 @@
+body {
+    font-family: 'georgia', 'serif';
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #ffffff8f;
+    padding: 10px 0;
+    text-align: center;
+}
+
+h1 {
+    margin: 5;
+}
+
+h2 { 
+    text-align: center;
+    background-color: #ffffff8f;
+}
+
+h3 {
+    text-align: center;
+}
+
+
+p { 
+    text-align: center;
+}
+
+nav { 
+    text-align: center;
+    color: pink;
+}
+
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #333;
+}
+
+main {
+    padding: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    max-height: 500px;
+    margin: auto;
+}
+
+form label {
+    margin-bottom: 5px;
+}
+
+form input, form select, form button {
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+
+body {
+    background: linear-gradient(to right, #d6d657, pink, rgb(131, 162, 248) );
+    width: 100%;
+    height: 200px;
+}
+
+.category-options {
+    display: none; 
+    margin-top: 10px;
+}
+.category-button {
+    display: block;
+    text-align: center;
+    margin: 5px 0;
+    padding: 10px;
+    background-color: #ecd4f5;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.drink-category {
+    margin-bottom: 50px; 
+    width: 100%;
+}
+
+.drink-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+   }
+    
+   
+.drink-item {
+    text-align: center;
+}
+
+.drink-name {
+    margin-top: 8px; 
+    font-size: 1.2em; 
+    color: #333; 
+}
+
+.background {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: filter 2s ease-in-out; 
+    z-index: 1;
+}
+
+.blurred {
+    filter: blur(4px); 
+}
+
+.fade-in-word {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 12em;
+    color: white;
+    opacity: 0;
+    z-index: 2;
+    transition: opacity 2s ease-in-out; 
+}
+
+.fade-in {
+    opacity: 1; 
+}
+
+.fade-out {
+    opacity: 0; 
+}
